@@ -1,6 +1,6 @@
 {
   "name": "form-validation-react-native",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "Form Validator for IOS and Android",
   "main": "index.js",
   "types": "index.d.ts",
