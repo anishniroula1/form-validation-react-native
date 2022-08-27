@@ -28,7 +28,7 @@ const BigTextQuestion = ({
 
   return (
     <View>
-      <AnimatedLabel question={question} labelStyle={labelStyle} />
+      <AnimatedLabel question={question} labelStyle={labelStyle ?? styles.labelStyle} />
       <TextInput
         {...inputPros}
         style={
@@ -76,6 +76,12 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     fontSize: 20,
     padding: 10,
+  },
+  labelStyle: {
+    color: '#9f9b9b',
+    fontSize: 15,
+    marginLeft: 20,
+    marginBottom: -5,
   },
   textInputOnFocus: {
     marginTop: 0,

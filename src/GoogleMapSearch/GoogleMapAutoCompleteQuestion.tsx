@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useDebounce } from './useDebounce';
 import { getCountryNameByCode, getStateValueByCode } from '../AlertMessage';
 import { Question } from '../type';
+import AnimatedLabel from "../AnimatedLabel";
 
 // import { env } from './env'
 
@@ -27,6 +28,7 @@ interface Props {
   showPostalCode?: boolean;
   businessName?: boolean;
   setValues?: any;
+  topLabelStyle?: any;
 }
 
 /**
@@ -52,6 +54,7 @@ const GoogleMapAutoCompleteQuestion = ({
   showPostalCode = false,
   businessName = false,
   setValues,
+                                         topLabelStyle
 }: Props) => {
   const [changeColor, setChangeColor] = React.useState(false);
   const [showPredictions, setShowPredictions] = useState(false);
@@ -250,6 +253,7 @@ const GoogleMapAutoCompleteQuestion = ({
 
   return (
     <View style={styleContainer}>
+      <AnimatedLabel question={question} labelStyle={topLabelStyle} />
       <View
         style={
           !!question.error

@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
   label: {
     fontWeight: '600',
     fontSize: 16,
-    marginLeft: 2,
+    marginLeft: 10,
   },
   dataContainer: {
     marginBottom: 5,

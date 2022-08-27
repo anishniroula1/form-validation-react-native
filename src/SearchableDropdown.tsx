@@ -241,16 +241,16 @@ const SearchableDropdown = ({
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: -5,
     margin: Platform.OS === 'ios' ? 12 : 2,
+    marginBottom: 10,
     padding: 10,
     flexDirection: 'column',
-    marginBottom: -10,
   },
   labelStyle: {
     color: '#9f9b9b',
     fontSize: 15,
     marginLeft: 7,
-    // marginBottom: -10,
   },
   inputWrapper: {
     flexDirection: 'row',
