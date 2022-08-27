@@ -91,7 +91,7 @@ const SearchableDropdown = ({
   return (
     <SafeAreaView style={styles.container}>
       <AnimatedLabel
-        question={{ value: search || questionValue, label: question?.label }}
+        question={{ value: search || (!!singleChoice && questionValue), label: question?.label }}
         labelStyle={topLabelStyle ?? styles.labelStyle}
       />
       <TouchableOpacity
