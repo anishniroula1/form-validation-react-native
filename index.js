@@ -2,7 +2,6 @@ import { alertMessage, generateRandomString } from './src/AlertMessage';
 import BigTextQuestion from './src/BigTextQuestion';
 import TextBoxQuestion from './src/TextBoxQuestion';
 import FormButton from './src/FormButton';
-import DropdownQuestion from './src/DropdownQuestion';
 import CheckBoxQuestion from './src/CheckboxQuestion';
 import RadioButtonQuestion from './src/RadioButtonQuestion';
 import PickerQuestion from './src/PickerQuestion';
@@ -19,6 +18,6 @@ import { formatPhoneNumber, formatDate } from './src/utils';
 import { Question } from './src/type';
 
 export { alertMessage, generateRandomString, Validators, useForm, BigTextQuestion, TextBoxQuestion,
-  FormButton, DropdownQuestion, CheckBoxQuestion, RadioButtonQuestion, SelectAllQuestion, SearchableDropdown,
+  FormButton, CheckBoxQuestion, RadioButtonQuestion, SelectAllQuestion, SearchableDropdown,
   SideBySideItem, GoogleMapAutoComplete, GoogleMapAutoCompleteQuestion, PickerQuestion, SingleCheckBoxQuestion,
   VerticalPickerQuestion, formatPhoneNumber, formatDate, Question };
