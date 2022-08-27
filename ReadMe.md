@@ -5,6 +5,7 @@ text box, checkbox, radio button and dropdown field. It will validate all your f
 
 ## 1. Installation
 ***
+  Mak sure you have @react-native-picker/picker
 ##### NPM
     npm install form-validation-react-native
 
