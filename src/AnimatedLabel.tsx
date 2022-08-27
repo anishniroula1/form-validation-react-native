@@ -30,7 +30,7 @@ export default function AnimatedLabel({ question, labelStyle }: Props) {
       {showTopLabel && (
         <Animated.View style={{ opacity: fadeAnim }}>
           <Text style={labelStyle ? labelStyle : styles.labelStyle}>
-            {!!question?.value && question?.label}
+            {(!!question?.value || !!question?.value?.length) && question?.label}
           </Text>
         </Animated.View>
       )}
