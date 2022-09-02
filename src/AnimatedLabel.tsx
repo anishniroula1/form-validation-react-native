@@ -25,12 +25,19 @@ export default function AnimatedLabel({ question, labelStyle }: Props) {
       }).start();
     }
   }, [question?.value]);
+  const getLabel = () => {
+    if (Array.isArray(question?.value) && !!question?.value?.length) {
+      return question?.label;
+    } else if (!Array.isArray(question?.value) && question?.value) {
+      return question?.label;
+    }
+  }
   return (
     <>
       {showTopLabel && (
         <Animated.View style={{ opacity: fadeAnim }}>
           <Text style={labelStyle ? labelStyle : styles.labelStyle}>
-            {(!!question?.value || !!question?.value?.length) && question?.label}
+            {getLabel()}
           </Text>
         </Animated.View>
       )}

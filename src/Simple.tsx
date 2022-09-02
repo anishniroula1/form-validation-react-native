@@ -9,6 +9,7 @@ interface Props {
   search?: any;
   index?: any;
   labelStyle?: any;
+  canCreate?: boolean;
 }
 const Simple = ({
   selectedValues = [],
@@ -18,6 +19,7 @@ const Simple = ({
   search,
   index,
   labelStyle,
+  canCreate,
 }: Props) => {
   return (
     <View key={index}>
@@ -30,9 +32,11 @@ const Simple = ({
             )}
         </TouchableOpacity>
       ) : (
-        <TouchableOpacity style={styles.container} onPress={onPress}>
-          <Text style={[labelStyle, styles.label]}>{search}</Text>
-        </TouchableOpacity>
+          <>
+            {canCreate && (<TouchableOpacity style={styles.container} onPress={onPress}>
+              <Text style={[labelStyle, styles.label]}>{search}</Text>
+            </TouchableOpacity>)}
+          </>
       )}
     </View>
   );

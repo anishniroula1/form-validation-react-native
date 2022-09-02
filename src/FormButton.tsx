@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, StyleSheet, TouchableHighlight } from 'react-native';
+import {Text, StyleSheet, TouchableHighlight, ActivityIndicator} from 'react-native';
 
 interface Props {
   title: string;
@@ -9,6 +9,7 @@ interface Props {
   highlightColor?: any;
   disabled?: boolean;
   disabledStyle?: any;
+  spinnerColor?: string;
 }
 export default function FormButton({
   disabled,
@@ -17,14 +18,15 @@ export default function FormButton({
   buttonStyle,
   textStyle,
   highlightColor,
-  disabledStyle,
+  spinnerColor
 }: Props) {
   return (
     <TouchableHighlight
-      style={disabled ? disabledStyle : buttonStyle ?? styles.button}
+      disabled={disabled}
+      style={buttonStyle ?? styles.button}
       onPress={onPress}
       underlayColor={highlightColor ?? '#c84648'}>
-      <Text style={textStyle ?? styles.text}>{title ?? 'Submit'}</Text>
+      {!disabled ? <Text style={textStyle ?? styles.text}>{title ?? 'Submit'}</Text> : <ActivityIndicator color={spinnerColor ?? 'white'} size={'small'} />}
     </TouchableHighlight>
   );
 }
