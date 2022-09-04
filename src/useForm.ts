@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Alert } from 'react-native';
 
-const useForm = (validate?: any, runOnSubmit?: any, initialState?: Object | any) => {
+const useForm = (validate?: any, runOnSubmit?: any, initialState?: Object | any, extraValidationValues?: any) => {
   const [values, setValues] = useState(!!initialState ? initialState : {});
   const [errors, setErrors] = useState<Object | any>({});
 
@@ -30,8 +30,8 @@ const useForm = (validate?: any, runOnSubmit?: any, initialState?: Object | any)
   }, [errors]);
 
   useEffect(() => {
-    if (!!validate(values)) {
-      const validationErrors = validate(values);
+    if (!!validate(values, extraValidationValues)) {
+      const validationErrors = validate(values, extraValidationValues);
       const touchedErrors = Object.keys(validationErrors)
         .filter((key) => touched.includes(key))
         .reduce((acc: any, key: string | number) => {
@@ -54,7 +54,7 @@ const useForm = (validate?: any, runOnSubmit?: any, initialState?: Object | any)
   };
 
   const handleSubmit = (event: any) => {
-    const validationErrors = validate(values);
+    const validationErrors = validate(values, extraValidationValues);
     setErrors(validationErrors);
     setSubmitting(true);
   };

@@ -72,7 +72,6 @@ export const userQuestions = (values: any, errors: any) => {
       value: values.phone,
       key: 'phone',
       label: 'Phone Number',
-      type: 'tel',
       maxLength: 10,
       minLength: 2,
       keyboardType: 'numeric',
