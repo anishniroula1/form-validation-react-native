@@ -30,6 +30,8 @@ interface Props {
   topLabelStyle?: any;
   containerStyle?: any;
   canCreate?: boolean;
+  singleChoiceEdit?: boolean,
+  crossBackground?: any,
 }
 const SearchableDropdown = ({
   question,
@@ -44,6 +46,8 @@ const SearchableDropdown = ({
   topLabelStyle,
   containerStyle,
   canCreate,
+  singleChoiceEdit = false,
+  crossBackground,
 }: Props) => {
   let questionValue = question?.value ?? [];
   const [search, setSearch] = useState("");
@@ -241,6 +245,28 @@ const SearchableDropdown = ({
                 }}
               />
             )}
+            {singleChoiceEdit && (
+                <Simple
+                    canCreate={canCreate}
+                    labelStyle={labelStyle}
+                    search={search}
+                    onPress={() => {
+                      setSavedItems([
+                        { label: search, value: search },
+                      ]);
+                      setItems([{ label: search, value: search }]);
+                      onChange({
+                        [question.key]: [
+                          {
+                            label: search,
+                            value: search,
+                            id: generateRandomString(6),
+                          },
+                        ],
+                      });
+                    }}
+                />
+            )}
           </ScrollView>
         ))}
       <View style={styles.choice}>
@@ -253,10 +279,23 @@ const SearchableDropdown = ({
                 onPress={() => removeItem(value)}
               >
                 <Text style={styles.scheduleItemTitle}>{value.value}</Text>
-                <Text style={styles.insideText}>X</Text>
+                <Text style={[styles.insideText, crossBackground ?? styles.crossBackground]}>X</Text>
               </TouchableOpacity>
             );
           })}
+        {singleChoiceEdit &&
+            questionValue?.map((value: any, key: number) => {
+              return (
+                  <TouchableOpacity
+                      key={key}
+                      style={styles.selectionWrapper}
+                      onPress={() => removeItem(value)}
+                  >
+                    <Text style={styles.scheduleItemTitle}>{value.value}</Text>
+                    <Text style={[styles.insideText, crossBackground ?? styles.crossBackground]}>X</Text>
+                  </TouchableOpacity>
+              );
+            })}
       </View>
       {!!question.error && (
         <View style={styles.errorContainer}>
@@ -344,6 +383,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     padding: 5,
     borderRadius: 10,
+  },
+  crossBackground: {
     backgroundColor: "#c84648",
   },
   selectionWrapper: {

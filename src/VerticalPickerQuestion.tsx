@@ -14,6 +14,7 @@ interface Props {
   boxHeight?: number;
   valueStyle?: any;
   disabled?: boolean;
+  selectedItemBackground?: any,
 }
 const VerticalPickerQuestion = ({
   boxHeight,
@@ -27,6 +28,7 @@ const VerticalPickerQuestion = ({
   listContainerStyle,
   onBlur,
   disabled = false,
+  selectedItemBackground
 }: Props) => {
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
@@ -68,7 +70,7 @@ const VerticalPickerQuestion = ({
                     style={[
                       styles.responseLabel,
                       styles.itemContainer,
-                      isSelected && styles.selectedItemContainer,
+                      isSelected && (selectedItemBackground ?? styles.selectedItemBackground),
                     ]}
                     onPress={() => onItemPress(res.value ?? res, index)}>
                     <Text
@@ -125,7 +127,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
   },
-  selectedItemContainer: {
+  selectedItemBackground: {
     backgroundColor: '#c84648',
   },
   selectedItemTitle: {
